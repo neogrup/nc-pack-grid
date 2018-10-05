@@ -1,0 +1,136 @@
+{
+  "data": {
+    "options": [
+      {
+        "code": "01BEB",
+        "name": "Bebidas",
+        "minQty": 0,
+        "maxQty": 2,
+        "content": [
+          {
+            "code": "R00051",
+            "name": "Vaso vino tinto",
+            "deliveryOrder": "Bebidas"
+          },
+          {
+            "code": "R00052",
+            "name": "Vaso vino blanco",
+            "deliveryOrder": "Bebidas"
+          }
+        ]
+      },
+      {
+        "code": "03PRIM",
+        "name": "Primeros",
+        "minQty": 0,
+        "maxQty": 2,
+        "content": [
+          {
+            "code": "R00243",
+            "name": "Ensalada verde",
+            "deliveryOrder": "Entrantes"
+          },
+          {
+            "code": "R00250",
+            "name": "Ensalada pollo",
+            "deliveryOrder": "Entrantes"
+          },
+          {
+            "code": "R00302",
+            "name": "Sopa fideos",
+            "deliveryOrder": "Primeros"
+          }
+        ]
+      },
+      {
+        "code": "04SEG",
+        "name": "Segundos",
+        "content": [
+          {
+            "code": "R00262",
+            "name": "Lomo con patatas",
+            "deliveryOrder": "Segundos"
+          },
+          {
+            "code": "R00263",
+            "name": "Pechuga empanada",
+            "deliveryOrder": "Segundos"
+          },
+          {
+            "code": "R00266",
+            "name": "Bistec",
+            "deliveryOrder": "Segundos"
+          },
+          {
+            "code": "R00297",
+            "name": "Calamares tomate",
+            "deliveryOrder": "Primeros"
+          }
+        ]
+      },
+      {
+        "code": "05POST",
+        "name": "Postres",
+        "content": [
+          {
+            "code": "R00313",
+            "name": "Flan de huevo",
+            "deliveryOrder": "Postres"
+          },
+          {
+            "code": "R00318",
+            "name": "Requesón miel",
+            "deliveryOrder": "Postres"
+          },
+          {
+            "code": "R00320",
+            "name": "Melocotón almíbar",
+            "deliveryOrder": "Postres"
+          }
+        ]
+      },
+      {
+        "code": "06CAF",
+        "name": "Cafés",
+        "content": [
+          {
+            "code": "R00055",
+            "name": "Café solo, nombre co",
+            "deliveryOrder": "Entrantes",
+            "behaviour": "tarifa"
+          },
+          {
+            "code": "R00056",
+            "name": "Con leche",
+            "deliveryOrder": "Cafés"
+          },
+          {
+            "code": "R00057",
+            "name": "Cortado",
+            "deliveryOrder": "Cafés"
+          },
+          {
+            "code": "R00060",
+            "name": "Té verde",
+            "deliveryOrder": "Cafés"
+          },
+          {
+            "code": "R00062",
+            "name": "Té negro",
+            "deliveryOrder": "Bebidas"
+          },
+          {
+            "code": "R00169",
+            "name": "Infusión menta",
+            "deliveryOrder": "Bebidas"
+          },
+          {
+            "code": "R00171",
+            "name": "Manzanilla",
+            "deliveryOrder": "Cafés"
+          }
+        ]
+      }
+    ]
+  }
+}

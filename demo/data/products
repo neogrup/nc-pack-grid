@@ -1,0 +1,1072 @@
+{
+  "apiVersion": "1",
+  "systemTime": "2018-08-07T12:56:35.857977428Z",
+  "data": {
+    "id": "5b4861c615b03f7626c85de8",
+    "code": "DEVVM35R005",
+    "name": "Compra Rest. estandar",
+    "status": "active",
+    "owner": "DEVVM34",
+    "externalCode": "R005",
+    "currency": {
+      "decimals": 2,
+      "decimalsUnitPrice": 2,
+      "decimalsLineAmount": 2
+    },
+    "quantity": {
+      "decimals": 2
+    },
+    "data": [
+      {
+        "code": "R070001",
+        "content": [
+          {
+            "code": "R00040",
+            "name": "Bailey's botella",
+            "price": 10.91,
+            "type": "product"
+          },
+          {
+            "code": "R00032",
+            "name": "Cerveza barril Damm Bier",
+            "price": 0.5,
+            "type": "product"
+          },
+          {
+            "code": "R00031",
+            "name": "Cerveza barril Mahou",
+            "price": 0.36,
+            "type": "product"
+          },
+          {
+            "code": "R00026",
+            "name": "Ginebra Beefeater botella",
+            "price": 9.09,
+            "type": "product"
+          },
+          {
+            "code": "R00027",
+            "name": "Ginebra Gordon's botella",
+            "price": 9.09,
+            "type": "product"
+          },
+          {
+            "code": "R00028",
+            "name": "Ginebra Larios botella",
+            "price": 10,
+            "type": "product"
+          },
+          {
+            "code": "R00209",
+            "name": "Marie Brizard botella",
+            "price": 9.09,
+            "type": "product"
+          },
+          {
+            "code": "R00166",
+            "name": "Sangría base",
+            "price": 0.27,
+            "type": "product"
+          },
+          {
+            "code": "R00029",
+            "name": "Tequila Gusano Rojo botella",
+            "price": 8.18,
+            "type": "product"
+          },
+          {
+            "code": "R00030",
+            "name": "Tequila José Cuervo botella",
+            "price": 8.18,
+            "type": "product"
+          },
+          {
+            "code": "R00023",
+            "name": "Vodka Absolut botella",
+            "price": 9.09,
+            "type": "product"
+          },
+          {
+            "code": "R00025",
+            "name": "Vodka Smirnoff botella",
+            "price": 10,
+            "type": "product"
+          },
+          {
+            "code": "R00024",
+            "name": "Vodka Stolichnaya botella",
+            "price": 8.18,
+            "type": "product"
+          },
+          {
+            "code": "R00036",
+            "name": "Whisky Ballantine's botella",
+            "price": 11.82,
+            "type": "product"
+          },
+          {
+            "code": "R00038",
+            "name": "Whisky Cardhu botella",
+            "price": 13.64,
+            "type": "product"
+          },
+          {
+            "code": "R00039",
+            "name": "Whisky DYC botella",
+            "price": 8.18,
+            "type": "product"
+          },
+          {
+            "code": "R00035",
+            "name": "Whisky J&B botella",
+            "price": 10.91,
+            "type": "product"
+          },
+          {
+            "code": "R00037",
+            "name": "Whisky Jim Bean botella",
+            "price": 9.09,
+            "type": "product"
+          }
+        ],
+        "name": "Alcohol",
+        "type": "folder"
+      },
+      {
+        "code": "R040000",
+        "content": [
+          {
+            "code": "R00128",
+            "name": "Berlina",
+            "price": 0.14,
+            "type": "product"
+          },
+          {
+            "code": "R00129",
+            "name": "Bollo",
+            "price": 0.14,
+            "type": "product"
+          },
+          {
+            "code": "R00123",
+            "name": "Caña chocolate",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00120",
+            "name": "Croissant",
+            "price": 0.14,
+            "type": "product"
+          },
+          {
+            "code": "R00121",
+            "name": "Cuerno chocolate",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00122",
+            "name": "Ensaimada",
+            "price": 0.14,
+            "type": "product"
+          },
+          {
+            "code": "R00130",
+            "name": "Magdalena Chocolate",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00127",
+            "name": "Magdalenas",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00126",
+            "name": "Napolitana atún",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00124",
+            "name": "Napolitana chocolate",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00125",
+            "name": "Napolitana crema",
+            "price": 0.18,
+            "type": "product"
+          }
+        ],
+        "name": "Bollería",
+        "type": "folder"
+      },
+      {
+        "code": "R070100",
+        "content": [
+          {
+            "code": "R00255",
+            "name": "Carne magra de cerdo",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00265",
+            "name": "Codillo de cerdo",
+            "price": 1.09,
+            "type": "product"
+          },
+          {
+            "code": "R00254",
+            "name": "Filete ternera",
+            "price": 1.18,
+            "type": "product"
+          },
+          {
+            "code": "R00253",
+            "name": "Lomo cerdo",
+            "price": 1.09,
+            "type": "product"
+          },
+          {
+            "code": "R00249",
+            "name": "Pechuga de pollo",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00252",
+            "name": "Redondo de ternera",
+            "price": 1.05,
+            "type": "product"
+          },
+          {
+            "code": "R00251",
+            "name": "Salchichas",
+            "price": 0.91,
+            "type": "product"
+          }
+        ],
+        "name": "Carne",
+        "type": "folder"
+      },
+      {
+        "code": "R030100",
+        "content": [
+          {
+            "code": "R00313",
+            "name": "Flan de huevo",
+            "price": 0.5,
+            "type": "product"
+          }
+        ],
+        "name": "Dulces",
+        "type": "folder"
+      },
+      {
+        "code": "R010000",
+        "content": [
+          {
+            "code": "R00011",
+            "name": "7Up lata",
+            "price": 0.32,
+            "type": "product"
+          },
+          {
+            "code": "R00013",
+            "name": "Bitter Kas lata",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00001",
+            "format": {
+              "code": "C01",
+              "factor": 25,
+              "name": "Cajas"
+            },
+            "name": "Coca Cola lata (25)",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00002",
+            "name": "Coca Cola Light lata",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00003",
+            "name": "Coca Cola Zero lata",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00006",
+            "name": "Fanta Limón lata",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00005",
+            "name": "Fanta Naranja lata",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00007",
+            "name": "Nestea Limón lata",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00015",
+            "name": "Pepsi lata",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00016",
+            "name": "Pepsi Light lata",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00012",
+            "name": "Red Bull lata",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00014",
+            "name": "Schweepes Citrus",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00004",
+            "name": "Sprite lata",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00010",
+            "name": "Tónica Schweppes",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00009",
+            "name": "Trina Limón lata",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00008",
+            "name": "Trina Naranja lata",
+            "price": 0.18,
+            "type": "product"
+          }
+        ],
+        "name": "Latas refresco",
+        "type": "folder"
+      },
+      {
+        "code": "R070002",
+        "content": [
+          {
+            "code": "R00054",
+            "name": "Café grano",
+            "price": 0.82,
+            "type": "product"
+          },
+          {
+            "code": "R00177",
+            "name": "Granizado limón base",
+            "price": 0.14,
+            "type": "product"
+          },
+          {
+            "code": "R00017",
+            "name": "Horchata",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00168",
+            "name": "Infusión menta sobres",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00041",
+            "name": "Leche desnatada Castillo",
+            "price": 0.32,
+            "type": "product"
+          },
+          {
+            "code": "R00022",
+            "name": "Leche entera Castillo",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00170",
+            "name": "Manzanilla sobres",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00172",
+            "name": "Rooibos sobres",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00061",
+            "name": "Té negro sobres",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00059",
+            "name": "Té verde sobres",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00042",
+            "name": "Zumo naranja",
+            "price": 0.68,
+            "type": "product"
+          }
+        ],
+        "name": "Otras bebidas",
+        "type": "folder"
+      },
+      {
+        "code": "R070200",
+        "content": [
+          {
+            "code": "R00148",
+            "name": "Bombona gas",
+            "price": 1.36,
+            "type": "product"
+          }
+        ],
+        "name": "Otras materias prima",
+        "type": "folder"
+      },
+      {
+        "code": "R070104",
+        "content": [
+          {
+            "code": "R00067",
+            "name": "Barra pan bocata",
+            "price": 0.46,
+            "type": "product"
+          },
+          {
+            "code": "R00068",
+            "name": "Barra pan restaurante",
+            "price": 0.46,
+            "type": "product"
+          },
+          {
+            "code": "R00077",
+            "name": "Chopped",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00078",
+            "name": "Chorizo",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00095",
+            "name": "Croquetas",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00100",
+            "name": "Empanadillas atún",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00267",
+            "name": "Ensaladilla rusa base",
+            "price": 1.09,
+            "type": "product"
+          },
+          {
+            "code": "R00246",
+            "name": "Espárragos base",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00106",
+            "name": "Frutos secos variados",
+            "price": 0.55,
+            "type": "product"
+          },
+          {
+            "code": "R00084",
+            "name": "Huevos",
+            "price": 0.36,
+            "type": "product"
+          },
+          {
+            "code": "R00081",
+            "name": "Jamón serrano",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00082",
+            "name": "Jamón york",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00083",
+            "name": "Lomo embuchado",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00245",
+            "name": "Mahonesa",
+            "price": 0.68,
+            "type": "product"
+          },
+          {
+            "code": "R00319",
+            "name": "Melocotón en almíbar base",
+            "price": 0.68,
+            "type": "product"
+          },
+          {
+            "code": "R00317",
+            "name": "Miel",
+            "price": 0.86,
+            "type": "product"
+          },
+          {
+            "code": "R00310",
+            "name": "Nata",
+            "price": 0.82,
+            "type": "product"
+          },
+          {
+            "code": "R00079",
+            "name": "Queso semigraso",
+            "price": 0.46,
+            "type": "product"
+          },
+          {
+            "code": "R00316",
+            "name": "Requesón",
+            "price": 1.14,
+            "type": "product"
+          },
+          {
+            "code": "R00080",
+            "name": "Salchichón",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00290",
+            "name": "Salsa carbonara",
+            "price": 0.82,
+            "type": "product"
+          },
+          {
+            "code": "R00286",
+            "name": "Salsa pesto",
+            "price": 0.82,
+            "type": "product"
+          },
+          {
+            "code": "R00131",
+            "name": "Salsa picante",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00105",
+            "name": "Salsa tomate",
+            "price": 0.91,
+            "type": "product"
+          }
+        ],
+        "name": "Otras materias prima",
+        "type": "folder"
+      },
+      {
+        "code": "R010002",
+        "content": [
+          {
+            "code": "R00064",
+            "name": "Agua 1L",
+            "price": 0.27,
+            "type": "product"
+          },
+          {
+            "code": "R00066",
+            "name": "Agua 20cl",
+            "price": 0.09,
+            "type": "product"
+          },
+          {
+            "code": "R00065",
+            "name": "Agua 50cl",
+            "price": 0.18,
+            "type": "product"
+          }
+        ],
+        "name": "Otros refrescos",
+        "type": "folder"
+      },
+      {
+        "code": "R070101",
+        "content": [
+          {
+            "code": "R00278",
+            "name": "Pasta fideos base",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00275",
+            "name": "Pasta lazos base",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00277",
+            "name": "Pasta macarrones base",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00276",
+            "name": "Pasta spaghettis base",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00289",
+            "name": "Pasta tallarines base",
+            "price": 0.91,
+            "type": "product"
+          }
+        ],
+        "name": "Pasta",
+        "type": "folder"
+      },
+      {
+        "code": "R070103",
+        "content": [
+          {
+            "code": "R00280",
+            "name": "Almejas base",
+            "price": 3.18,
+            "type": "product"
+          },
+          {
+            "code": "R00282",
+            "name": "Calamares base",
+            "price": 1.59,
+            "type": "product"
+          },
+          {
+            "code": "R00293",
+            "name": "Filetes salmón base",
+            "price": 1.59,
+            "type": "product"
+          },
+          {
+            "code": "R00108",
+            "name": "Gambas saladas",
+            "price": 1.59,
+            "type": "product"
+          },
+          {
+            "code": "R00097",
+            "name": "Mejillones",
+            "price": 3.18,
+            "type": "product"
+          },
+          {
+            "code": "R00273",
+            "name": "Ostras base",
+            "price": 4.55,
+            "type": "product"
+          },
+          {
+            "code": "R00295",
+            "name": "Salmón ahumado base",
+            "price": 1.36,
+            "type": "product"
+          },
+          {
+            "code": "R00304",
+            "name": "Sopa de pescado base",
+            "price": 1,
+            "type": "product"
+          }
+        ],
+        "name": "Pescado y marisco",
+        "type": "folder"
+      },
+      {
+        "code": "R020300",
+        "content": [
+          {
+            "code": "R00118",
+            "name": "4 estaciones",
+            "price": 2.05,
+            "type": "product"
+          },
+          {
+            "code": "R00112",
+            "name": "4 quesos",
+            "price": 2.27,
+            "type": "product"
+          },
+          {
+            "code": "R00119",
+            "name": "Calzone",
+            "price": 2.05,
+            "type": "product"
+          },
+          {
+            "code": "R00113",
+            "name": "Hawaiana",
+            "price": 2.27,
+            "type": "product"
+          },
+          {
+            "code": "R00114",
+            "name": "Margarita",
+            "price": 1.82,
+            "type": "product"
+          },
+          {
+            "code": "R00115",
+            "name": "Napolitana",
+            "price": 2.27,
+            "type": "product"
+          },
+          {
+            "code": "R00116",
+            "name": "Peperoni",
+            "price": 2.27,
+            "type": "product"
+          },
+          {
+            "code": "R00117",
+            "name": "Vegetal",
+            "price": 2.05,
+            "type": "product"
+          }
+        ],
+        "name": "Pizzas",
+        "type": "folder"
+      },
+      {
+        "code": "R070000",
+        "content": [
+          {
+            "code": "R00018",
+            "name": "Coca Cola base",
+            "price": 0.46,
+            "type": "product"
+          },
+          {
+            "code": "R00019",
+            "name": "Fanta Limón base",
+            "price": 0.46,
+            "type": "product"
+          },
+          {
+            "code": "R00020",
+            "name": "Fanta Naranja base",
+            "price": 0.46,
+            "type": "product"
+          },
+          {
+            "code": "R00021",
+            "name": "Sprite base",
+            "price": 0.46,
+            "type": "product"
+          }
+        ],
+        "name": "Refrescos",
+        "type": "folder"
+      },
+      {
+        "code": "R070102",
+        "content": [
+          {
+            "code": "R00092",
+            "name": "Aceitunas",
+            "price": 0.59,
+            "type": "product"
+          },
+          {
+            "code": "R00233",
+            "name": "Arroz base",
+            "price": 0.27,
+            "type": "product"
+          },
+          {
+            "code": "R00086",
+            "name": "Cebolla",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00240",
+            "name": "Escarola",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00091",
+            "name": "Espinacas",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00228",
+            "name": "Fresas base",
+            "price": 0.36,
+            "type": "product"
+          },
+          {
+            "code": "R00103",
+            "name": "Garbanzos",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00235",
+            "name": "Guisantes",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00104",
+            "name": "Judías",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00239",
+            "name": "Lechuga iceberg",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00102",
+            "name": "Lentejas",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00222",
+            "name": "Mandarina base",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00220",
+            "name": "Manzana base",
+            "price": 0.18,
+            "type": "product"
+          },
+          {
+            "code": "R00224",
+            "name": "Melocotón base",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00218",
+            "name": "Melón base",
+            "price": 0.36,
+            "type": "product"
+          },
+          {
+            "code": "R00085",
+            "name": "Patatas",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00306",
+            "name": "Pepinos",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00216",
+            "name": "Pera base",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00257",
+            "name": "Pimiento verde",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00230",
+            "name": "Piña base",
+            "price": 0.91,
+            "type": "product"
+          },
+          {
+            "code": "R00214",
+            "name": "Plátano base",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00226",
+            "name": "Sandía base",
+            "price": 0.27,
+            "type": "product"
+          },
+          {
+            "code": "R00234",
+            "name": "Setas variadas",
+            "price": 0.46,
+            "type": "product"
+          },
+          {
+            "code": "R00241",
+            "name": "Tomate",
+            "price": 0.23,
+            "type": "product"
+          },
+          {
+            "code": "R00242",
+            "name": "Zanahoria",
+            "price": 0.23,
+            "type": "product"
+          }
+        ],
+        "name": "Vegetales",
+        "type": "folder"
+      },
+      {
+        "code": "R010301",
+        "content": [
+          {
+            "code": "R00158",
+            "name": "Estrísimo Bach",
+            "price": 13.64,
+            "type": "product"
+          },
+          {
+            "code": "R00156",
+            "name": "Morlanda",
+            "price": 9.09,
+            "type": "product"
+          },
+          {
+            "code": "R00157",
+            "name": "René Barbier Kral.",
+            "price": 11.82,
+            "type": "product"
+          },
+          {
+            "code": "R00155",
+            "name": "Torres Viñasol",
+            "price": 7.27,
+            "type": "product"
+          },
+          {
+            "code": "R00034",
+            "name": "Vino blanco",
+            "price": 4.55,
+            "type": "product"
+          }
+        ],
+        "name": "Vinos blancos",
+        "type": "folder"
+      },
+      {
+        "code": "R010300",
+        "content": [
+          {
+            "code": "R00149",
+            "name": "Beronia Crianza",
+            "price": 8.64,
+            "type": "product"
+          },
+          {
+            "code": "R00150",
+            "name": "Faustino I",
+            "price": 9.09,
+            "type": "product"
+          },
+          {
+            "code": "R00151",
+            "name": "Marqués Cáceres",
+            "price": 10.91,
+            "type": "product"
+          },
+          {
+            "code": "R00152",
+            "name": "Marqués Riscal",
+            "price": 8.86,
+            "type": "product"
+          },
+          {
+            "code": "R00153",
+            "name": "René Barbier",
+            "price": 8.86,
+            "type": "product"
+          },
+          {
+            "code": "R00154",
+            "name": "Sangre de toro",
+            "price": 10,
+            "type": "product"
+          },
+          {
+            "code": "R00033",
+            "name": "Vino tinto",
+            "price": 4.55,
+            "type": "product"
+          }
+        ],
+        "name": "Vinos tintos",
+        "type": "folder"
+      }
+    ],
+    "sysData": {
+      "created": "2018-07-13T08:24:38.808Z",
+      "createdBy": "neo",
+      "edited": "2018-07-25T11:14:24.134Z",
+      "editedBy": "neo",
+      "editing": "2018-07-25T11:14:24.134Z",
+      "editingBy": "neo"
+    }
+  },
+  "error": null
+}

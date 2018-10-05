@@ -1,0 +1,80 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../nc-items-grid/nc-items-grid.html">
+<link rel="import" href="../nc-products-grid/nc-products-grid.html">
+
+<dom-module id="nc-pack-grid">
+  <template>
+    <style>
+      .optionsContainer{
+      }
+
+      .elementsContainer{
+      }
+    </style>
+
+    <h2>opciones</h2>
+    <div class="optionsContainer">
+      <nc-items-grid
+          data="{{packOptionsGridData}}"
+          loading="{{itemsGridLoading}}"
+          language="{{language}}"
+          is-paginated
+          auto-flow
+          dimension="70"
+          on-item-selected="_packOptionSelected">
+      </nc-items-grid>
+    </div>
+    <div class="elementsContainer">
+      <h2>Elementos</h2>
+      <nc-items-grid
+          data="{{packElementsGridData}}"
+          loading="{{itemsGridLoading}}"
+          language="{{language}}"
+          is-paginated
+          auto-flow
+          dimension="70"
+          on-item-selected="_productSelected">
+      </nc-items-grid>
+    </div>
+
+  </template>
+
+  <script>
+    class NcPacksGrid extends Polymer.Element {
+      static get is() { return 'nc-pack-grid'; }
+      static get properties() {
+        return {
+          packOptionsGridData: {
+            type: Object,
+            value: {}
+          },
+          packElementsGridData: {
+            type: Object,
+            value: {}
+          },
+          language: String,
+          breadcrumb: {
+            type: Boolean,
+            value: false
+          }
+        };
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+      }
+
+      _packOptionSelected(option){
+        console.log(option)
+
+        this.packElementsGridData = option.detail.content;
+      }
+
+      _productSelected(item){
+        this.dispatchEvent(new CustomEvent('product-selected', {detail: item.detail, bubbles: true, composed: true }));
+      }
+    }
+
+    window.customElements.define(NcPacksGrid.is, NcPacksGrid);
+  </script>
+</dom-module>
