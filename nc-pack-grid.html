@@ -6,16 +6,17 @@
   <template>
     <style>
       .optionsContainer{
+        background-color: darkseagreen;
       }
 
       .elementsContainer{
+        background-color: darksalmon;
       }
     </style>
 
-    <h2>opciones</h2>
     <div class="optionsContainer">
       <nc-items-grid
-          data="{{packOptionsGridData}}"
+          items-grid-data="{{packOptions}}"
           loading="{{itemsGridLoading}}"
           language="{{language}}"
           is-paginated
@@ -25,17 +26,15 @@
       </nc-items-grid>
     </div>
     <div class="elementsContainer">
-      <h2>Elementos</h2>
-      <nc-items-grid
-          data="{{packElementsGridData}}"
+      <nc-products-grid
+          products-grid-data="{{packElementsGridData}}"
           loading="{{itemsGridLoading}}"
           language="{{language}}"
-          is-paginated
-          auto-flow
-          dimension="70"
-          on-item-selected="_productSelected">
-      </nc-items-grid>
+          on-product-selected="_packElementSelected">
+      </nc-products-grid>
     </div>
+    <br>
+    <paper-button style="background-color: red" raised on-tap="_return">Volver</paper-button>
 
   </template>
 
@@ -44,13 +43,13 @@
       static get is() { return 'nc-pack-grid'; }
       static get properties() {
         return {
-          packOptionsGridData: {
-            type: Object,
-            value: {}
+          packOptions: {
+            type: Array,
+            value: []
           },
+          packOptionCodeSelected: String,
           packElementsGridData: {
-            type: Object,
-            value: {}
+            type: Array,
           },
           language: String,
           breadcrumb: {
@@ -64,14 +63,59 @@
         super.connectedCallback();
       }
 
+      setOptions(packOptions){
+        this.set('packOptions',[]);
+        this.set('packOptions',packOptions);
+        Polymer.dom.flush();
+        this.selectDefaultOption();
+        
+      }
+
+      selectDefaultOption(){
+        let i;
+        let optionCompleted;
+        optionCompleted = false;
+
+        for (i in this.packOptions){
+          if ((this.packOptions[i].minQty === 1) && (this.packOptions[i].maxQty !== this.packOptions[i].used) && (this.packOptions[i].visible != false)){
+            optionCompleted = true;
+            this.packOptionCodeSelected = this.packOptions[i].code;
+            this.packElementsGridData = this.packOptions[i].content;
+            break;
+          }
+        }
+
+        if (!optionCompleted){
+          for (i in this.packOptions){
+            if ((this.packOptions[i].minQty === 1) && (this.packOptions[i].visible != false)){
+              optionCompleted = true;
+              this.packOptionCodeSelected = this.packOptions[i].code;
+              this.packElementsGridData = this.packOptions[i].content;
+              break;
+            }
+          }
+        }
+
+        if (!optionCompleted){
+          optionCompleted = true;
+            this.packOptionCodeSelected = this.packOptions[0].code;
+            this.packElementsGridData = this.packOptions[0].content;
+        }
+
+      }
+
       _packOptionSelected(option){
         console.log(option)
-
+        this.packOptionCodeSelected = option.detail.code;
         this.packElementsGridData = option.detail.content;
       }
 
-      _productSelected(item){
-        this.dispatchEvent(new CustomEvent('product-selected', {detail: item.detail, bubbles: true, composed: true }));
+      _packElementSelected(item){
+        this.dispatchEvent(new CustomEvent('pack-line-selected', {detail: {product: item.detail, packOptionCodeSelected: this.packOptionCodeSelected}, bubbles: true, composed: true }));
+      }
+
+      _return(){
+        this.dispatchEvent(new CustomEvent('return', {bubbles: true, composed: true }));
       }
     }
 
