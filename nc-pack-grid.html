@@ -6,11 +6,19 @@
   <template>
     <style>
       .optionsContainer{
-        background-color: darkseagreen;
+        /* background-color: darkseagreen; */
+        height: 80px;
       }
 
       .elementsContainer{
-        background-color: darksalmon;
+        /* background-color: darksalmon; */
+        height: calc(100% - 80px - 60px); /* 80px optionsContainer + 60px button*/
+      }
+
+       paper-button{
+        margin: 10px 5px;
+        background-color: var(--app-secondary-color);
+        color: white;
       }
     </style>
 
@@ -33,8 +41,7 @@
           on-product-selected="_packElementSelected">
       </nc-products-grid>
     </div>
-    <br>
-    <paper-button style="background-color: red" raised on-tap="_return">Volver</paper-button>
+    <paper-button raised on-tap="_closePackSelection">Volver</paper-button>
 
   </template>
 
@@ -65,10 +72,14 @@
 
       setOptions(packOptions){
         this.set('packOptions',[]);
-        this.set('packOptions',packOptions);
+        let packOptionsFiltered = packOptions.filter(this.checkOptionVisible);
+        this.set('packOptions',packOptionsFiltered);
         Polymer.dom.flush();
         this.selectDefaultOption();
-        
+      }
+
+      checkOptionVisible(packOption){
+        return (packOption.hasOwnProperty('visible') ? false: true);
       }
 
       selectDefaultOption(){
@@ -105,7 +116,6 @@
       }
 
       _packOptionSelected(option){
-        console.log(option)
         this.packOptionCodeSelected = option.detail.code;
         this.packElementsGridData = option.detail.content;
       }
@@ -114,8 +124,8 @@
         this.dispatchEvent(new CustomEvent('pack-line-selected', {detail: {product: item.detail, packOptionCodeSelected: this.packOptionCodeSelected}, bubbles: true, composed: true }));
       }
 
-      _return(){
-        this.dispatchEvent(new CustomEvent('return', {bubbles: true, composed: true }));
+      _closePackSelection(){
+        this.dispatchEvent(new CustomEvent('close-pack-selection', {bubbles: true, composed: true }));
       }
     }
 
