@@ -5,17 +5,20 @@
 <dom-module id="nc-pack-grid">
   <template>
     <style>
+      :host{
+        --options-container-height: 140px;
+        --elements-container-height: 140px - 120px; /* Small buttons 80px optionsContainer + 60px button - Big buttons 140px optionsContainer + 120px button */
+      }
+
       .optionsContainer{
-        /* background-color: darkseagreen; */
-        height: 80px;
+        height: var(--options-container-height);
       }
 
       .elementsContainer{
-        /* background-color: darksalmon; */
-        height: calc(100% - 80px - 60px); /* 80px optionsContainer + 60px button*/
+        height: calc(100% - var(--elements-container-height));
       }
 
-       paper-button{
+      paper-button{
         margin: 10px 5px;
         background-color: var(--app-secondary-color);
         color: white;
@@ -29,13 +32,14 @@
           language="{{language}}"
           is-paginated
           auto-flow
-          dimension="70"
+          dimension="{{dimensionProductsButtons}}"
           on-item-selected="_packOptionSelected">
       </nc-items-grid>
     </div>
     <div class="elementsContainer">
       <nc-products-grid
           products-grid-data="{{packElementsGridData}}"
+          dimension-products-buttons="{{dimensionProductsButtons}}"
           loading="{{itemsGridLoading}}"
           language="{{language}}"
           on-product-selected="_packElementSelected">
@@ -62,7 +66,12 @@
           breadcrumb: {
             type: Boolean,
             value: false
-          }
+          },
+          dimensionProductsButtons: {
+            type: Number,
+            reflectToAttribute: true,
+            observer: '_dimensionProductsButtonsChanged'
+          },
         };
       }
 
@@ -87,6 +96,7 @@
         let optionCompleted;
         optionCompleted = false;
 
+        // console.log(this.packOptions)
         for (i in this.packOptions){
           if ((this.packOptions[i].minQty === 1) && (this.packOptions[i].maxQty !== this.packOptions[i].used) && (this.packOptions[i].visible != false)){
             optionCompleted = true;
@@ -109,8 +119,8 @@
 
         if (!optionCompleted){
           optionCompleted = true;
-            this.packOptionCodeSelected = this.packOptions[0].code;
-            this.packElementsGridData = this.packOptions[0].content;
+          this.packOptionCodeSelected = this.packOptions[0].code;
+          this.packElementsGridData = this.packOptions[0].content;
         }
 
       }
@@ -126,6 +136,13 @@
 
       _closePackSelection(){
         this.dispatchEvent(new CustomEvent('close-pack-selection', {bubbles: true, composed: true }));
+      }
+
+      _dimensionProductsButtonsChanged(){
+        let optionsContainerHeight = parseInt(this.dimensionProductsButtons) + 20;
+        let elementsContainerHeight = parseInt(this.dimensionProductsButtons) + optionsContainerHeight;
+        this.updateStyles({'--options-container-height':   optionsContainerHeight + 'px' });
+        this.updateStyles({'--elements-container-height':   elementsContainerHeight + 'px' });
       }
     }
 

@@ -1,6 +1,6 @@
 {
   "name": "nc-pack-grid",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Polymer component to display pack grid (options and elements)",
   "authors": [
     "edgar.piera@neogrup.com"
