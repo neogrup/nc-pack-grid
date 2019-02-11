@@ -27,25 +27,29 @@
 
     <div class="optionsContainer">
       <nc-items-grid
+          id="gridPacksOptions"
+          language="{{language}}"
           items-grid-data="{{packOptions}}"
           loading="{{itemsGridLoading}}"
-          language="{{language}}"
           is-paginated
           auto-flow
-          dimension="{{dimensionProductsButtons}}"
+          item-height="[[heightPacksGridItems]]"
+          item-width="[[widthPacksGridItems]]"
           on-item-selected="_packOptionSelected">
       </nc-items-grid>
     </div>
     <div class="elementsContainer">
       <nc-products-grid
-          products-grid-data="{{packElementsGridData}}"
-          dimension-products-buttons="{{dimensionProductsButtons}}"
-          loading="{{itemsGridLoading}}"
+          id="gridPacksProducts"
           language="{{language}}"
+          products-grid-data="{{packElementsGridData}}"
+          height-products-grid-items="[[heightPacksGridItems]]"
+          width-products-grid-items="[[widthPacksGridItems]]"
+          loading="{{itemsGridLoading}}"
           on-product-selected="_packElementSelected">
       </nc-products-grid>
     </div>
-    <paper-button raised on-tap="_closePackSelection">Volver</paper-button>
+    <!-- <paper-button raised on-tap="_closePackSelection">Volver</paper-button> -->
 
   </template>
 
@@ -67,11 +71,23 @@
             type: Boolean,
             value: false
           },
-          dimensionProductsButtons: {
+          heightPacksGridItems: {
             type: Number,
             reflectToAttribute: true,
-            observer: '_dimensionProductsButtonsChanged'
+            observer: '_heightPackButtonsChanged'
           },
+          widthPacksGridItems: {
+            type: Number,
+            reflectToAttribute: true
+          },
+          marginPacksGridItems: {
+            type: Number,
+            reflectToAttribute: true
+          },
+          viewModePacksGridItems: {
+            type: String,
+            reflectToAttribute: true
+          }
         };
       }
 
@@ -138,9 +154,9 @@
         this.dispatchEvent(new CustomEvent('close-pack-selection', {bubbles: true, composed: true }));
       }
 
-      _dimensionProductsButtonsChanged(){
-        let optionsContainerHeight = parseInt(this.dimensionProductsButtons) + 20;
-        let elementsContainerHeight = parseInt(this.dimensionProductsButtons) + optionsContainerHeight;
+      _heightPackButtonsChanged(){
+        let optionsContainerHeight = parseInt(this.heightPacksGridItems) + 20;
+        let elementsContainerHeight = parseInt(this.heightPacksGridItems) + optionsContainerHeight;
         this.updateStyles({'--options-container-height':   optionsContainerHeight + 'px' });
         this.updateStyles({'--elements-container-height':   elementsContainerHeight + 'px' });
       }
