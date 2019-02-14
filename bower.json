@@ -1,6 +1,6 @@
 {
   "name": "nc-pack-grid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Polymer component to display pack grid (options and elements)",
   "authors": [
     "edgar.piera@neogrup.com"
@@ -20,7 +20,7 @@
   "ignore": [],
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
-    "nc-items-grid": "NEOGRUP/nc-items-grid#^1.0.2",
+    "nc-items-grid": "NEOGRUP/nc-items-grid#^1.0.17",
     "nc-products-grid": "NEOGRUP/nc-products-grid#^1.0.1",
     "paper-card": "PolymerElements/paper-card#^2.0.0"
   },

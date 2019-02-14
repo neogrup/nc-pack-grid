@@ -5,24 +5,16 @@
 <dom-module id="nc-pack-grid">
   <template>
     <style>
-      :host{
-        --options-container-height: 140px;
-        --elements-container-height: 140px - 120px; /* Small buttons 80px optionsContainer + 60px button - Big buttons 140px optionsContainer + 120px button */
-      }
-
       .optionsContainer{
+        width: 100%;
         height: var(--options-container-height);
       }
 
       .elementsContainer{
-        height: calc(100% - var(--elements-container-height));
+        width: 100%;
+        height: calc(100% - var(--options-container-height));
       }
 
-      paper-button{
-        margin: 10px 5px;
-        background-color: var(--app-secondary-color);
-        color: white;
-      }
     </style>
 
     <div class="optionsContainer">
@@ -31,6 +23,7 @@
           language="{{language}}"
           items-grid-data="{{packOptions}}"
           loading="{{itemsGridLoading}}"
+          keep-item-selected
           is-paginated
           auto-flow
           item-height="[[heightPacksGridItems]]"
@@ -62,7 +55,10 @@
             type: Array,
             value: []
           },
-          packOptionCodeSelected: String,
+          packOptionCodeSelected: {
+            type: String,
+            observer: '_packOptionCodeSelected'
+          },
           packElementsGridData: {
             type: Array,
           },
@@ -119,6 +115,15 @@
             this.packOptionCodeSelected = this.packOptions[i].code;
             this.packElementsGridData = this.packOptions[i].content;
             break;
+          } else {
+            if (this.packOptions[i].hasOwnProperty('behaviour')){
+              if ((this.packOptions[i].behaviour === 'PAUSA') && (this.packOptions[i].maxQty !== this.packOptions[i].used)){
+                optionCompleted = true;
+                this.packOptionCodeSelected = this.packOptions[i].code;
+                this.packElementsGridData = this.packOptions[i].content;
+                break;
+              }
+            }
           }
         }
 
@@ -146,6 +151,10 @@
         this.packElementsGridData = option.detail.content;
       }
 
+      _packOptionCodeSelected(option){
+        this.$.gridPacksOptions.selectItem(option);
+      }
+
       _packElementSelected(item){
         this.dispatchEvent(new CustomEvent('pack-line-selected', {detail: {product: item.detail, packOptionCodeSelected: this.packOptionCodeSelected}, bubbles: true, composed: true }));
       }
@@ -156,9 +165,7 @@
 
       _heightPackButtonsChanged(){
         let optionsContainerHeight = parseInt(this.heightPacksGridItems) + 20;
-        let elementsContainerHeight = parseInt(this.heightPacksGridItems) + optionsContainerHeight;
         this.updateStyles({'--options-container-height':   optionsContainerHeight + 'px' });
-        this.updateStyles({'--elements-container-height':   elementsContainerHeight + 'px' });
       }
     }
 
