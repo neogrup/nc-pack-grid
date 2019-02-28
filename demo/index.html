@@ -5,87 +5,301 @@ Copyright (c) 2017 Neo
 -->
 <html lang="es">
 <head>
-  <title>nc-pack-grid demo</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <title>nc-pack-grid demo</title>
 
-  <link rel="import" href="../../polymer/polymer-element.html">
-  <link rel="import" href="../../paper-card/paper-card.html">
-  <link rel="import" href="../../iron-ajax/iron-ajax.html">
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
-  <link rel="import" href="../nc-pack-grid.html">
-  <style>
-    body{
-      margin: 0px;
-      padding: 0px;
-      font-family: 'Roboto', 'Noto', sans-serif;
-    }
-  </style>
+  <script type="module">
+    import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
+    import '@polymer/iron-demo-helpers/demo-snippet';
+  </script>
+
+  <script type="module" src="../nc-pack-grid.js"></script>
+
+  <custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </custom-style>
 </head>
-<body unresolved>
-<dom-module id="nc-pack-grid-demo">
-  <template>
-    <style>
-     :host {
-        display: block;
-        padding: 5px;
+<body>
+  <div class="vertical-section-container centered">
+    <h3>POS nc-pack-grid demo</h3>
+    <demo-snippet>
+      <template>
+        <demo-nc-pack-grid></demo-nc-pack-grid>
+      </template>
+    </demo-snippet>
+  </div>
+
+
+  <script type="module">
+    import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+
+    class DemoNcPackGrid extends PolymerElement {
+      static get template() {
+        return html`
+          <style>
+            .container{
+              height: 300px;
+            }
+          </style>
+
+          <div class="container">
+            <nc-pack-grid
+                id="gridPacks"
+                language="{{language}}"
+                height-packs-grid-items="[[dimensionGridButtons]]"
+                width-packs-grid-items="[[dimensionGridButtons]]"
+                on-pack-line-selected="_packLineSelected">
+            </nc-pack-grid>
+          </div>
+        `;
       }
 
-      .gridContainer {
-        width: 100%;
-        height: 50%;
-      }
-      .paperCardGrid{
-        height: calc(100% - 15px);
-        width: calc(100% - 0px);
-      }
-
-      @media (min-width: 780px)  {
-        .gridContainer {
-          width: 50%;
-          height: 100%;
-          padding: 0px;
+      static get properties() {
+        return {
+          language: {
+            type: String,
+            value: 'es'
+          },
+          showPrice: {
+            type: Boolean,
+            value: true
+          },
+          dimensionGridButtons: {
+            type: Number,
+            value: 100
+          }
         }
       }
 
-
-    </style>
-
-    <iron-ajax id="getOptionsList"
-        auto
-        url="data/options"
-        method="get"
-        handle-as="json"
-        last-response="{{optionsList}}">
-    </iron-ajax>
-
-    <div class="gridContainer">
-      <paper-card class="paperCardGrid">
-        <nc-pack-grid
-            pack-options-grid-data='{{optionsList.data.options}}'
-            language="es">
-        </nc-pack-grid>
-      </paper-card>
-    </div>
-
-
-  </template>
-  <script>
-    class NcProductsGridDemo extends Polymer.Element {
-      static get is() {
-        return 'nc-pack-grid-demo';
+      connectedCallback(){
+        super.connectedCallback();
+        let packOptionsList = [
+          {
+            "backgroundColor": "#FFCC80",
+            "code": "PIZZA1BASE",
+            "content": [
+              {
+                "code": "R00999",
+                "name": "Pizza pizzologo",
+                "urlImage": "imgprod/R002/CAJA10/restauración/pizza/vegetal.png"
+              },
+              {
+                "code": "R00119",
+                "name": "Calzone",
+                "urlImage": "imgprod/R002/CAJA10/restauración/pizza/calzone.png"
+              },
+              {
+                "code": "R00118",
+                "name": "4 estaciones",
+                "urlImage": "imgprod/R002/CAJA10/restauración/pizza/4estaciones.png"
+              },
+              {
+                "code": "R00117",
+                "name": "Vegetal",
+                "urlImage": "imgprod/R002/CAJA10/restauración/pizza/vegetal.png"
+              },
+              {
+                "code": "R00116",
+                "name": "Peperoni",
+                "urlImage": "imgprod/R002/CAJA10/restauración/pizza/peperoni2.png"
+              },
+              {
+                "code": "R00115",
+                "name": "Napolitana",
+                "urlImage": "imgprod/R002/CAJA10/restauración/pizza/napolitana.png"
+              },
+              {
+                "code": "R00114",
+                "name": "Margarita",
+                "urlImage": "imgprod/R002/CAJA10/restauración/pizza/margarita.png"
+              },
+              {
+                "code": "R00113",
+                "name": "Hawaiana",
+                "urlImage": "imgprod/R002/CAJA10/restauración/pizza/hawaiana.png"
+              },
+              {
+                "code": "R00112",
+                "name": "4 quesos",
+                "urlImage": "imgprod/R002/CAJA10/restauración/pizza/4quesos.png"
+              }
+            ],
+            "maxQty": 1,
+            "minQty": 1,
+            "name": "1ª pizza base \n (1 / 1)",
+            "used": 1
+          },
+          {
+            "backgroundColor": "#FFCC80",
+            "behaviour": "PAUSA",
+            "code": "PIZZA1EXTRAS",
+            "content": [
+              {
+                "code": "R00338",
+                "name": "+ Bacon",
+                "urlImage": "imgprod/R002/CAJA10/C:/Archivos de programa/Neo Grup/Images"
+              },
+              {
+                "code": "R00339",
+                "name": "- Bacon",
+                "urlImage": "imgprod/R002/CAJA10/C:/Archivos de programa/Neo Grup/Images"
+              },
+              {
+                "code": "R00340",
+                "name": "+ Atún",
+                "urlImage": "imgprod/R002/CAJA10/C:/Archivos de programa/Neo Grup/Images"
+              },
+              {
+                "code": "R00341",
+                "name": "- Atún",
+                "urlImage": "imgprod/R002/CAJA10/C:/Archivos de programa/Neo Grup/Images"
+              },
+              {
+                "code": "R00342",
+                "name": "+ Olivas",
+                "urlImage": "imgprod/R002/CAJA10/C:/Archivos de programa/Neo Grup/Images"
+              },
+              {
+                "code": "R00343",
+                "name": "- Olivas",
+                "urlImage": "imgprod/R002/CAJA10/C:/Archivos de programa/Neo Grup/Images"
+              },
+              {
+                "code": "R00344",
+                "name": "+ Salsa BBQ",
+                "urlImage": "imgprod/R002/CAJA10/C:/Archivos de programa/Neo Grup/Images"
+              },
+              {
+                "code": "R00345",
+                "name": "- Salsa BBQ",
+                "urlImage": "imgprod/R002/CAJA10/C:/Archivos de programa/Neo Grup/Images"
+              }
+            ],
+            "maxQty": 5,
+            "minQty": 0,
+            "used": 2,
+            "name": "1ª Pizza extras \n (2 / 5)",
+          },
+          {
+            "backgroundColor": "#FFCC80",
+            "code": "PIZZA2BASE",
+            "content": [
+              {
+                "code": "R00999",
+                "name": "Pizza pizzologo",
+                "urlImage": "imgprod/R002/CAJA10/restauración/pizza/vegetal.png"
+              },
+              {
+                "code": "R00112",
+                "name": "4 quesos",
+                "urlImage": "imgprod/R002/CAJA10/restauración/pizza/4quesos.png"
+              },
+              {
+                "code": "R00113",
+                "name": "Hawaiana",
+                "urlImage": "imgprod/R002/CAJA10/restauración/pizza/hawaiana.png"
+              },
+              {
+                "code": "R00114",
+                "name": "Margarita",
+                "urlImage": "imgprod/R002/CAJA10/restauración/pizza/margarita.png"
+              },
+              {
+                "code": "R00115",
+                "name": "Napolitana",
+                "urlImage": "imgprod/R002/CAJA10/restauración/pizza/napolitana.png"
+              },
+              {
+                "code": "R00116",
+                "name": "Peperoni",
+                "urlImage": "imgprod/R002/CAJA10/restauración/pizza/peperoni2.png"
+              },
+              {
+                "code": "R00117",
+                "name": "Vegetal",
+                "urlImage": "imgprod/R002/CAJA10/restauración/pizza/vegetal.png"
+              },
+              {
+                "code": "R00118",
+                "name": "4 estaciones",
+                "urlImage": "imgprod/R002/CAJA10/restauración/pizza/4estaciones.png"
+              },
+              {
+                "code": "R00119",
+                "name": "Calzone",
+                "urlImage": "imgprod/R002/CAJA10/restauración/pizza/calzone.png"
+              }
+            ],
+            "maxQty": 1,
+            "minQty": 1,
+            "name": "2ª Pizza base \n (0 / 1)",
+          },
+          {
+            "backgroundColor": "#FFCC80",
+            "behaviour": "PAUSA",
+            "code": "PIZZA2EXTRAS",
+            "content": [
+              {
+                "code": "R00345",
+                "name": "- Salsa BBQ",
+                "urlImage": "imgprod/R002/CAJA10/C:/Archivos de programa/Neo Grup/Images"
+              },
+              {
+                "code": "R00344",
+                "name": "+ Salsa BBQ",
+                "urlImage": "imgprod/R002/CAJA10/C:/Archivos de programa/Neo Grup/Images"
+              },
+              {
+                "code": "R00343",
+                "name": "- Olivas",
+                "urlImage": "imgprod/R002/CAJA10/C:/Archivos de programa/Neo Grup/Images"
+              },
+              {
+                "code": "R00342",
+                "name": "+ Olivas",
+                "urlImage": "imgprod/R002/CAJA10/C:/Archivos de programa/Neo Grup/Images"
+              },
+              {
+                "code": "R00341",
+                "name": "- Atún",
+                "urlImage": "imgprod/R002/CAJA10/C:/Archivos de programa/Neo Grup/Images"
+              },
+              {
+                "code": "R00340",
+                "name": "+ Atún",
+                "urlImage": "imgprod/R002/CAJA10/C:/Archivos de programa/Neo Grup/Images"
+              },
+              {
+                "code": "R00339",
+                "name": "- Bacon",
+                "urlImage": "imgprod/R002/CAJA10/C:/Archivos de programa/Neo Grup/Images"
+              },
+              {
+                "code": "R00338",
+                "name": "+ Bacon",
+                "urlImage": "imgprod/R002/CAJA10/C:/Archivos de programa/Neo Grup/Images"
+              }
+            ],
+            "maxQty": 5,
+            "minQty": 0,
+            "name": "2ª Pizza extras \n (0 / 5)",
+          }
+        ];
+        this.$.gridPacks.setOptions(packOptionsList);
       }
 
-      _productSelected(item){
-        console.log(item);
+      _packLineSelected(packLine){
+        console.log(packLine);
       }
     }
-    window.customElements.define(NcProductsGridDemo.is, NcProductsGridDemo);
+    window.customElements.define('demo-nc-pack-grid', DemoNcPackGrid);
   </script>
-</dom-module>
-<nc-pack-grid-demo></nc-pack-grid-demo>
+
 </body>
 </html>
