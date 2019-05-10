@@ -53,6 +53,10 @@ class NcPacksGrid extends PolymerElement {
         type: Array,
         value: []
       },
+      lineDocSelected: {
+        type: Object,
+        value: {}
+      },
       packOptionCodeSelected: {
         type: String,
         observer: '_packOptionCodeSelected'
@@ -89,6 +93,13 @@ class NcPacksGrid extends PolymerElement {
     super.connectedCallback();
   }
 
+
+  setDocLineSelected(lineDocSelected){
+    this.lineDocSelected = lineDocSelected;
+  }
+  
+
+
   setOptions(packOptions){
     this.set('packOptions',[]);
     let packOptionsFiltered = packOptions.filter(this.checkOptionVisible);
@@ -107,19 +118,30 @@ class NcPacksGrid extends PolymerElement {
     optionCompleted = false;
 
     // console.log(this.packOptions)
-    for (i in this.packOptions){
-      if ((this.packOptions[i].minQty === 1) && (this.packOptions[i].maxQty !== this.packOptions[i].used) && (this.packOptions[i].visible != false)){
-        optionCompleted = true;
-        this.packOptionCodeSelected = this.packOptions[i].code;
-        this.packElementsGridData = this.packOptions[i].content;
-        break;
-      } else {
-        if (this.packOptions[i].hasOwnProperty('behaviour')){
-          if ((this.packOptions[i].behaviour === 'PAUSA') && (this.packOptions[i].maxQty !== this.packOptions[i].used)){
-            optionCompleted = true;
-            this.packOptionCodeSelected = this.packOptions[i].code;
-            this.packElementsGridData = this.packOptions[i].content;
-            break;
+    if (this.lineDocSelected.type === 'packLine'){
+      for (i in this.packOptions){
+        if (this.packOptions[i].code === this.lineDocSelected.elementPack) {
+          optionCompleted = true;
+          this.packOptionCodeSelected = this.packOptions[i].code;
+          this.packElementsGridData = this.packOptions[i].content;
+          break;
+        }
+      }
+    } else {
+      for (i in this.packOptions){
+        if ((this.packOptions[i].minQty === 1) && (this.packOptions[i].maxQty !== this.packOptions[i].used) && (this.packOptions[i].visible != false)){
+          optionCompleted = true;
+          this.packOptionCodeSelected = this.packOptions[i].code;
+          this.packElementsGridData = this.packOptions[i].content;
+          break;
+        } else {
+          if (this.packOptions[i].hasOwnProperty('behaviour')){
+            if ((this.packOptions[i].behaviour === 'PAUSA') && (this.packOptions[i].maxQty !== this.packOptions[i].used)){
+              optionCompleted = true;
+              this.packOptionCodeSelected = this.packOptions[i].code;
+              this.packElementsGridData = this.packOptions[i].content;
+              break;
+            }
           }
         }
       }
