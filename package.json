@@ -10,7 +10,7 @@
     "url": "https://github.com/NEOGRUP/nc-pack-grid"
   },
   "name": "@neogrup/nc-pack-grid",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "resolutions": {
     "inherits": "2.0.3",
     "samsam": "1.1.3",
@@ -22,8 +22,8 @@
   "license": "MIT",
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
-    "@neogrup/nc-products-grid": "^2.0.0",
-    "@neogrup/nc-items-grid": "^2.0.0"
+    "@neogrup/nc-products-grid": "^2.0.2",
+    "@neogrup/nc-items-grid": "^2.0.10"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.0.0-pre.19",

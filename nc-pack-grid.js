@@ -49,6 +49,10 @@ class NcPacksGrid extends PolymerElement {
 
   static get properties() {
     return {
+      packCompleted:{
+        type: Boolean,
+        value: false
+      },
       packOptions: {
         type: Array,
         value: []
@@ -93,19 +97,22 @@ class NcPacksGrid extends PolymerElement {
     super.connectedCallback();
   }
 
+  setPackCompleted(packCompleted){
+    this.packCompleted = packCompleted;
+  }
 
   setDocLineSelected(lineDocSelected){
     this.lineDocSelected = lineDocSelected;
   }
   
-
-
   setOptions(packOptions){
+    this.set('packElementsGridData',[]);
     this.set('packOptions',[]);
-    let packOptionsFiltered = packOptions.filter(this.checkOptionVisible);
-    this.set('packOptions',packOptionsFiltered);
-    // flush();
-    this.selectDefaultOption();
+    if (packOptions){
+      let packOptionsFiltered = packOptions.filter(this.checkOptionVisible);
+      this.set('packOptions',packOptionsFiltered);
+      this.selectDefaultOption();
+    }
   }
 
   checkOptionVisible(packOption){
@@ -114,55 +121,82 @@ class NcPacksGrid extends PolymerElement {
 
   selectDefaultOption(){
     let i;
-    let optionCompleted;
-    optionCompleted = false;
+    let packOptionSelected;
+    let packOptionCompleted;
+    packOptionSelected = false;
+    packOptionCompleted = true;
 
+    // console.log('lineDocSelected', this.lineDocSelected)
+    // console.log('packOptionCodeSelected', this.packOptionCodeSelected)
+    // console.log('packCompleted', this.packCompleted)
     // console.log(this.packOptions)
     if (this.lineDocSelected.type === 'packLine'){
       for (i in this.packOptions){
         if (this.packOptions[i].code === this.lineDocSelected.elementPack) {
-          optionCompleted = true;
+          packOptionSelected = true;
           this.packOptionCodeSelected = this.packOptions[i].code;
           this.packElementsGridData = this.packOptions[i].content;
           break;
         }
       }
+      
     } else {
+
       for (i in this.packOptions){
-        if ((this.packOptions[i].minQty === 1) && (this.packOptions[i].maxQty !== this.packOptions[i].used) && (this.packOptions[i].visible != false)){
-          optionCompleted = true;
-          this.packOptionCodeSelected = this.packOptions[i].code;
-          this.packElementsGridData = this.packOptions[i].content;
-          break;
-        } else {
-          if (this.packOptions[i].hasOwnProperty('behaviour')){
-            if ((this.packOptions[i].behaviour === 'PAUSA') && (this.packOptions[i].maxQty !== this.packOptions[i].used)){
-              optionCompleted = true;
-              this.packOptionCodeSelected = this.packOptions[i].code;
-              this.packElementsGridData = this.packOptions[i].content;
-              break;
+        if (this.packOptions[i].code === this.packOptionCodeSelected) {
+
+          // console.log(this.packOptions[i])
+
+          if ((this.packOptions[i].minQty >= 1) && (this.packOptions[i].maxQty !== this.packOptions[i].used) && (this.packOptions[i].visible != false)){
+            packOptionSelected = true;
+            this.packOptionCodeSelected = this.packOptions[i].code;
+            this.packElementsGridData = this.packOptions[i].content;
+            packOptionCompleted = false;
+            break;
+          } else {
+            if (this.packOptions[i].hasOwnProperty('behaviour')){
+              if ((this.packOptions[i].behaviour === 'PAUSA') && (this.packOptions[i].maxQty !== this.packOptions[i].used)){
+                packOptionSelected = true;
+                this.packOptionCodeSelected = this.packOptions[i].code;
+                this.packElementsGridData = this.packOptions[i].content;
+                packOptionCompleted = false;
+                break;
+              }
+            }
+          }
+        }
+      }
+
+      if (packOptionCompleted){
+        for (i in this.packOptions){
+          if ((this.packOptions[i].minQty >= 1) && (this.packOptions[i].maxQty !== this.packOptions[i].used) && (this.packOptions[i].visible != false)){
+            packOptionSelected = true;
+            this.packOptionCodeSelected = this.packOptions[i].code;
+            this.packElementsGridData = this.packOptions[i].content;
+            break;
+          } else {
+            if (this.packOptions[i].hasOwnProperty('behaviour')){
+              if ((this.packOptions[i].behaviour === 'PAUSA') && (this.packOptions[i].maxQty !== this.packOptions[i].used)){
+                packOptionSelected = true;
+                this.packOptionCodeSelected = this.packOptions[i].code;
+                this.packElementsGridData = this.packOptions[i].content;
+                break;
+              }
             }
           }
         }
       }
     }
 
-    if (!optionCompleted){
-      for (i in this.packOptions){
-        if ((this.packOptions[i].minQty === 1) && (this.packOptions[i].visible != false)){
-          optionCompleted = true;
-          this.packOptionCodeSelected = this.packOptions[i].code;
-          this.packElementsGridData = this.packOptions[i].content;
-          break;
-        }
+    if (!packOptionSelected){
+      if (Object.keys(this.lineDocSelected).length === 0){
+        this.dispatchEvent(new CustomEvent('close-pack-selection', {bubbles: true, composed: true }));
+      } else{
+        this.packOptionCodeSelected = this.packOptions[0].code;
+        this.packElementsGridData = this.packOptions[0].content;
       }
     }
 
-    if (!optionCompleted){
-      optionCompleted = true;
-      this.packOptionCodeSelected = this.packOptions[0].code;
-      this.packElementsGridData = this.packOptions[0].content;
-    }
   }
 
   _packOptionSelected(option){
