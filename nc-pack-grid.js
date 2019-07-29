@@ -29,6 +29,7 @@ class NcPacksGrid extends PolymerElement {
             auto-flow
             item-height="[[heightPacksGridItems]]"
             item-width="[[widthPacksGridItems]]"
+            animations ="[[animations]]"
             on-item-selected="_packOptionSelected">
         </nc-items-grid>
       </div>
@@ -41,6 +42,7 @@ class NcPacksGrid extends PolymerElement {
             height-products-grid-items="[[heightPacksGridItems]]" 
             width-products-grid-items="[[widthPacksGridItems]]" 
             loading="{{itemsGridLoading}}" 
+            animations ="[[animations]]"
             on-product-selected="_packElementSelected">
         </nc-products-grid>
       </div>
@@ -60,6 +62,10 @@ class NcPacksGrid extends PolymerElement {
       lineDocSelected: {
         type: Object,
         value: {}
+      },
+      animations: {
+        type: Boolean,
+        value: true
       },
       packOptionCodeSelected: {
         type: String,
