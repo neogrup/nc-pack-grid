@@ -7,6 +7,24 @@ class NcPacksGrid extends PolymerElement {
   static get template() {
     return html`
       <style>
+        :host {
+          --pack-grid-item-content-border-radius: 5px;
+          --pack-grid-item-content-box-shadow: none;
+          --pack-grid-item-content-folder-font-size: 1.3em;
+          --pack-grid-item-options-content-default-font-size: 1em;
+        }
+
+        nc-items-grid{
+          --items-grid-item-content-default-font-size: var(--pack-grid-item-options-content-default-font-size);
+        }
+
+        nc-products-grid{
+          --products-grid-item-content-border-radius: var(--pack-grid-item-content-border-radius);
+          --products-grid-item-content-box-shadow: var(--pack-grid-item-content-box-shadow);
+          --products-grid-item-content-folder-font-size: var(--pack-grid-item-content-folder-font-size);
+        }
+
+
         .optionsContainer{
           width: 100%;
           height: var(--options-container-height);
@@ -25,10 +43,12 @@ class NcPacksGrid extends PolymerElement {
             language="{{language}}" 
             items-grid-data="{{packOptions}}" 
             loading="{{itemsGridLoading}}" 
-            keep-item-selected is-paginated
+            keep-item-selected 
+            is-paginated
             auto-flow
-            item-height="[[heightPacksGridItems]]"
-            item-width="[[widthPacksGridItems]]"
+            item-height="[[heightPacksGridItemsOptions]]"
+            item-width="[[widthPacksGridItemsOptions]]"
+            item-margin="[[marginPacksGridItems]]" 
             animations ="[[animations]]"
             on-item-selected="_packOptionSelected">
         </nc-items-grid>
@@ -41,6 +61,8 @@ class NcPacksGrid extends PolymerElement {
             products-grid-data="{{packElementsGridData}}" 
             height-products-grid-items="[[heightPacksGridItems]]" 
             width-products-grid-items="[[widthPacksGridItems]]" 
+            margin-products-grid-items="[[marginPacksGridItems]]"
+            view-mode-products-grid-items="[[viewModePacksGridItems]]"
             loading="{{itemsGridLoading}}" 
             animations ="[[animations]]"
             on-product-selected="_packElementSelected">
@@ -79,6 +101,14 @@ class NcPacksGrid extends PolymerElement {
         type: Boolean,
         value: false
       },
+      heightPacksGridItemsOptions: {
+        type: Number,
+        reflectToAttribute: true
+      },
+      widthPacksGridItemsOptions: {
+        type: Number,
+        reflectToAttribute: true
+      },
       heightPacksGridItems: {
         type: Number,
         reflectToAttribute: true,
@@ -87,7 +117,7 @@ class NcPacksGrid extends PolymerElement {
       widthPacksGridItems: {
         type: Number,
         reflectToAttribute: true
-      },
+      },            
       marginPacksGridItems: {
         type: Number,
         reflectToAttribute: true
@@ -150,8 +180,6 @@ class NcPacksGrid extends PolymerElement {
 
       for (i in this.packOptions){
         if (this.packOptions[i].code === this.packOptionCodeSelected) {
-
-          // console.log(this.packOptions[i])
 
           if ((this.packOptions[i].minQty >= 1) && (this.packOptions[i].maxQty !== this.packOptions[i].used) && (this.packOptions[i].visible != false)){
             packOptionSelected = true;
@@ -219,7 +247,12 @@ class NcPacksGrid extends PolymerElement {
   }
 
   _heightPackButtonsChanged(){
-    let optionsContainerHeight = parseInt(this.heightPacksGridItems) + 20;
+    let optionsContainerHeight;
+    if (this.viewModePacksGridItems === 'kiosk'){
+      optionsContainerHeight = ((parseInt(this.heightPacksGridItemsOptions) + parseInt(this.marginPacksGridItems)) * 2) + 50;
+    } else {
+      optionsContainerHeight = parseInt(this.heightPacksGridItemsOptions) + 20;
+    }
     this.updateStyles({'--options-container-height':   optionsContainerHeight + 'px' });
   }
 }
