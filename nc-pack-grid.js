@@ -65,7 +65,8 @@ class NcPacksGrid extends PolymerElement {
             view-mode-products-grid-items="[[viewModePacksGridItems]]"
             loading="{{itemsGridLoading}}" 
             animations ="[[animations]]"
-            on-product-selected="_packElementSelected">
+            on-product-selected="_packElementSelected"
+            on-product-info-selected="_packElementInfoSelected">
         </nc-products-grid>
       </div>
     `;
@@ -254,6 +255,10 @@ class NcPacksGrid extends PolymerElement {
       optionsContainerHeight = parseInt(this.heightPacksGridItemsOptions) + 20;
     }
     this.updateStyles({'--options-container-height':   optionsContainerHeight + 'px' });
+  }
+
+  _packElementInfoSelected(item){
+    this.dispatchEvent(new CustomEvent('pack-line-info-selected', {detail: {product: item.detail, packOptionCodeSelected: this.packOptionCodeSelected}, bubbles: true, composed: true }));
   }
 }
 
