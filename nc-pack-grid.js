@@ -37,7 +37,7 @@ class NcPacksGrid extends PolymerElement {
 
       </style>
 
-      <div class="optionsContainer">
+      <div class="optionsContainer" hidden$="[[hideOptionsContainer]]">
         <nc-items-grid 
             id="gridPacksOptions" 
             language="{{language}}" 
@@ -92,7 +92,8 @@ class NcPacksGrid extends PolymerElement {
       },
       packOptionCodeSelected: {
         type: String,
-        observer: '_packOptionCodeSelected'
+        observer: '_packOptionCodeSelected',
+        notify: true,
       },
       packElementsGridData: {
         type: Array,
@@ -126,6 +127,10 @@ class NcPacksGrid extends PolymerElement {
       viewModePacksGridItems: {
         type: String,
         reflectToAttribute: true
+      }, 
+      hideOptionsContainer: {
+        type: Boolean,
+        value: false
       }
     };
   }
@@ -141,8 +146,17 @@ class NcPacksGrid extends PolymerElement {
   setDocLineSelected(lineDocSelected){
     this.lineDocSelected = lineDocSelected;
   }
+
+  setPackOption(option){
+    this.packOptionCodeSelected = option.code;
+    this.packElementsGridData = option.content;
+  }
   
   setOptions(packOptions){
+    if (this.viewModePacksGridItems === 'kiosk'){
+      this.hideOptionsContainer = true;
+    }
+
     this.set('packElementsGridData',[]);
     this.set('packOptions',[]);
     if (packOptions){
@@ -179,9 +193,14 @@ class NcPacksGrid extends PolymerElement {
       
     } else {
 
-      for (i in this.packOptions){
-        if (this.packOptions[i].code === this.packOptionCodeSelected) {
+      let currentOptionIndex;
+      if (this.packOptionCodeSelected){
+        currentOptionIndex = this.packOptions.findIndex(packOption => packOption.code === this.packOptionCodeSelected);
+      }
 
+      for (i in this.packOptions){
+
+        if (this.packOptions[i].code === this.packOptionCodeSelected) {
           if ((this.packOptions[i].minQty >= 1) && (this.packOptions[i].maxQty !== this.packOptions[i].used) && (this.packOptions[i].visible != false)){
             packOptionSelected = true;
             this.packOptionCodeSelected = this.packOptions[i].code;
@@ -204,6 +223,12 @@ class NcPacksGrid extends PolymerElement {
 
       if (packOptionCompleted){
         for (i in this.packOptions){
+          if (this.viewModePacksGridItems === 'kiosk'){
+            if ((currentOptionIndex) && (i <= currentOptionIndex)) {
+              continue;
+            }
+          }
+
           if ((this.packOptions[i].minQty >= 1) && (this.packOptions[i].maxQty !== this.packOptions[i].used) && (this.packOptions[i].visible != false)){
             packOptionSelected = true;
             this.packOptionCodeSelected = this.packOptions[i].code;
