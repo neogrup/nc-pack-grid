@@ -162,12 +162,90 @@ class NcPacksGrid extends PolymerElement {
     if (packOptions){
       let packOptionsFiltered = packOptions.filter(this.checkOptionVisible);
       this.set('packOptions',packOptionsFiltered);
-      this.selectDefaultOption();
+
+      if (Object.keys(this.lineDocSelected).length === 0){
+        this.selectDefaultOption();
+      } else {
+        this.selectDefaultOptionLineSelected();
+      }
     }
   }
 
   checkOptionVisible(packOption){
     return (packOption.hasOwnProperty('visible') ? false: true);
+  }
+
+  selectDefaultOptionLineSelected(){
+    let i;
+    let packOptionSelected;
+    let packOptionCodeSelected;
+    let packOptionCompleted;
+    packOptionSelected = false;
+    packOptionCompleted = true;
+    if (this.lineDocSelected.type === 'packLine'){
+
+      // console.warn('**********************************************');
+      // console.log('lineDocSelected', this.lineDocSelected)
+      // console.log('packOptionCodeSelected', this.packOptionCodeSelected)
+
+      if (this.packOptionCodeSelected === ""){
+        packOptionCodeSelected = this.lineDocSelected.elementPack;
+      } else {
+        if (this.packOptionCodeSelected === this.lineDocSelected.elementPack){
+          packOptionCodeSelected = this.lineDocSelected.elementPack;
+        } else {
+          packOptionCodeSelected = this.packOptionCodeSelected;
+        }
+      }
+
+      for (i in this.packOptions){
+        if (this.packOptions[i].code === packOptionCodeSelected) {
+          packOptionSelected = true;
+          this.packOptionCodeSelected = this.packOptions[i].code;
+          this.packElementsGridData = this.packOptions[i].content;
+          break;
+        }
+      }
+      
+    } else {
+
+      let currentOptionIndex;
+      if (this.packOptionCodeSelected){
+        currentOptionIndex = this.packOptions.findIndex(packOption => packOption.code === this.packOptionCodeSelected);
+      }
+
+      for (i in this.packOptions){
+        if (this.packOptions[i].code === this.packOptionCodeSelected) {
+          if (this.packOptions[i].visible != false){
+            packOptionSelected = true;
+            this.packOptionCodeSelected = this.packOptions[i].code;
+            this.packElementsGridData = this.packOptions[i].content;
+            packOptionCompleted = false;
+            break;
+          } 
+        }
+      }
+
+      if (packOptionCompleted){
+        for (i in this.packOptions){
+          if (this.viewModePacksGridItems === 'kiosk'){
+            if ((currentOptionIndex) && (i <= currentOptionIndex)) {
+              continue;
+            }
+          }
+        }
+      }
+
+    }
+
+    if (!packOptionSelected){
+      if (this.lineDocSelected.type === 'pack'){
+          this.selectDefaultOption();
+      } else {
+        this.packOptionCodeSelected = this.packOptions[0].code;
+        this.packElementsGridData = this.packOptions[0].content;
+      }
+    }
   }
 
   selectDefaultOption(){
@@ -177,6 +255,7 @@ class NcPacksGrid extends PolymerElement {
     packOptionSelected = false;
     packOptionCompleted = true;
 
+    // console.warn('**********************************************');
     // console.log('lineDocSelected', this.lineDocSelected)
     // console.log('packOptionCodeSelected', this.packOptionCodeSelected)
     // console.log('packCompleted', this.packCompleted)
@@ -255,8 +334,7 @@ class NcPacksGrid extends PolymerElement {
         this.packOptionCodeSelected = this.packOptions[0].code;
         this.packElementsGridData = this.packOptions[0].content;
       }
-    }
-
+    } 
   }
 
   _packOptionSelected(option){
