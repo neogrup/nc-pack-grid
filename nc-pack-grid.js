@@ -344,10 +344,20 @@ class NcPacksGrid extends PolymerElement {
 
   _packOptionCodeSelected(option){
     this.$.gridPacksOptions.selectItem(option);
+    this.dispatchEvent(new CustomEvent('close-pack-line-actions', { bubbles: true, composed: true }));
   }
 
   _packElementSelected(item){
-    this.dispatchEvent(new CustomEvent('pack-line-selected', {detail: {product: item.detail, packOptionCodeSelected: this.packOptionCodeSelected}, bubbles: true, composed: true }));
+    // console.log('lineDocSelected', this.lineDocSelected)
+    // console.log('packOptionCodeSelected', this.packOptionCodeSelected)
+    // console.log('packCompleted', this.packCompleted)
+    // console.log('packOptions',this.packOptions)
+    // console.log('item.detail',item.detail)
+    if ((item.detail.usedQty > 0) && (this.viewModePacksGridItems != 'kiosk')){
+      this.dispatchEvent(new CustomEvent('open-pack-line-actions', {detail: {product: item.detail, packOptionCodeSelected: this.packOptionCodeSelected}, bubbles: true, composed: true }));
+    } else {
+      this.dispatchEvent(new CustomEvent('pack-line-selected', {detail: {product: item.detail, packOptionCodeSelected: this.packOptionCodeSelected}, bubbles: true, composed: true }));
+    }
   }
 
   _heightPackButtonsChanged(){
