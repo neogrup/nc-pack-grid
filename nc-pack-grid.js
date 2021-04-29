@@ -74,6 +74,8 @@ class NcPacksGrid extends PolymerElement {
 
   static get properties() {
     return {
+      packType: String, // pack or modifier
+      packLevel: Number, // pack or modifier
       packCompleted:{
         type: Boolean,
         value: false
@@ -152,6 +154,18 @@ class NcPacksGrid extends PolymerElement {
     this.packElementsGridData = option.content;
   }
   
+  setPackType(packType){
+    this.set('packType', packType);
+  }
+
+  setPackLevel(packLevel){
+    this.set('packLevel', packLevel);
+  }
+
+  getPackLevel(){
+    return this.packLevel;
+  }
+
   setOptions(packOptions){
     if (this.viewModePacksGridItems === 'kiosk'){
       this.hideOptionsContainer = true;
@@ -182,7 +196,7 @@ class NcPacksGrid extends PolymerElement {
     let packOptionCompleted;
     packOptionSelected = false;
     packOptionCompleted = true;
-    if (this.lineDocSelected.type === 'packLine'){
+    if ((this.lineDocSelected.type === 'packLine') || ((this.lineDocSelected.type !== 'packLine') && (this.lineDocSelected.level > 0))){
 
       // console.warn('**********************************************');
       // console.log('lineDocSelected', this.lineDocSelected)
@@ -260,7 +274,7 @@ class NcPacksGrid extends PolymerElement {
     // console.log('packOptionCodeSelected', this.packOptionCodeSelected)
     // console.log('packCompleted', this.packCompleted)
     // console.log(this.packOptions)
-    if (this.lineDocSelected.type === 'packLine'){
+    if ((this.lineDocSelected.type === 'packLine') || ((this.lineDocSelected.type !== 'packLine') && (this.lineDocSelected.level > 0))){
       for (i in this.packOptions){
         if (this.packOptions[i].code === this.lineDocSelected.elementPack) {
           packOptionSelected = true;
@@ -329,6 +343,7 @@ class NcPacksGrid extends PolymerElement {
 
     if (!packOptionSelected){
       if (Object.keys(this.lineDocSelected).length === 0){
+        // this.dispatchEvent(new CustomEvent('close-pack-selection-default', {bubbles: true, composed: true }));
         this.dispatchEvent(new CustomEvent('close-pack-selection', {bubbles: true, composed: true }));
       } else{
         this.packOptionCodeSelected = this.packOptions[0].code;
@@ -348,15 +363,10 @@ class NcPacksGrid extends PolymerElement {
   }
 
   _packElementSelected(item){
-    // console.log('lineDocSelected', this.lineDocSelected)
-    // console.log('packOptionCodeSelected', this.packOptionCodeSelected)
-    // console.log('packCompleted', this.packCompleted)
-    // console.log('packOptions',this.packOptions)
-    // console.log('item.detail',item.detail)
     if ((item.detail.usedQty > 0) && (this.viewModePacksGridItems != 'kiosk')){
-      this.dispatchEvent(new CustomEvent('open-pack-line-actions', {detail: {product: item.detail, packOptionCodeSelected: this.packOptionCodeSelected}, bubbles: true, composed: true }));
+      this.dispatchEvent(new CustomEvent('open-pack-line-actions', {detail: {product: item.detail, packOptionCodeSelected: this.packOptionCodeSelected, packType: this.packType}, bubbles: true, composed: true }));
     } else {
-      this.dispatchEvent(new CustomEvent('pack-line-selected', {detail: {product: item.detail, packOptionCodeSelected: this.packOptionCodeSelected}, bubbles: true, composed: true }));
+      this.dispatchEvent(new CustomEvent('pack-line-selected', {detail: {product: item.detail, packOptionCodeSelected: this.packOptionCodeSelected, packType: this.packType}, bubbles: true, composed: true }));
     }
   }
 
