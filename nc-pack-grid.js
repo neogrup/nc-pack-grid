@@ -301,8 +301,8 @@ class NcPacksGrid extends PolymerElement {
             packOptionCompleted = false;
             break;
           } else {
-            if (this.packOptions[i].hasOwnProperty('behaviour')){
-              if ((this.packOptions[i].behaviour === 'PAUSA') && (this.packOptions[i].maxQty !== this.packOptions[i].used)){
+            if (this.packOptions[i].hasOwnProperty('behavior')){
+              if ((this.packOptions[i].behavior === 'PAUSA') && (this.packOptions[i].maxQty !== this.packOptions[i].used)){
                 packOptionSelected = true;
                 this.packOptionCodeSelected = this.packOptions[i].code;
                 this.packElementsGridData = this.packOptions[i].content;
@@ -328,8 +328,8 @@ class NcPacksGrid extends PolymerElement {
             this.packElementsGridData = this.packOptions[i].content;
             break;
           } else {
-            if (this.packOptions[i].hasOwnProperty('behaviour')){
-              if ((this.packOptions[i].behaviour === 'PAUSA') && (this.packOptions[i].maxQty !== this.packOptions[i].used)){
+            if (this.packOptions[i].hasOwnProperty('behavior')){
+              if ((this.packOptions[i].behavior === 'PAUSA') && (this.packOptions[i].maxQty !== this.packOptions[i].used)){
                 packOptionSelected = true;
                 this.packOptionCodeSelected = this.packOptions[i].code;
                 this.packElementsGridData = this.packOptions[i].content;
