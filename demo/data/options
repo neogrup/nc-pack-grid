@@ -97,7 +97,7 @@
             "code": "R00055",
             "name": "Café solo, nombre co",
             "deliveryOrder": "Entrantes",
-            "behaviour": "tarifa"
+            "behavior": "tarifa"
           },
           {
             "code": "R00056",
