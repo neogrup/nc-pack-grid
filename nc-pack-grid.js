@@ -363,7 +363,7 @@ class NcPacksGrid extends PolymerElement {
   }
 
   _packElementSelected(item){
-    if ((item.detail.usedQty > 0) && (this.viewModePacksGridItems != 'kiosk')){
+    if (item.detail.usedQty > 0){
       this.dispatchEvent(new CustomEvent('open-pack-line-actions', {detail: {product: item.detail, packOptionCodeSelected: this.packOptionCodeSelected, packType: this.packType}, bubbles: true, composed: true }));
     } else {
       this.dispatchEvent(new CustomEvent('pack-line-selected', {detail: {product: item.detail, packOptionCodeSelected: this.packOptionCodeSelected, packType: this.packType}, bubbles: true, composed: true }));
