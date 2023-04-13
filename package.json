@@ -21,8 +21,8 @@
   "author": "edgar.piera@neogrup.com",
   "license": "MIT",
   "dependencies": {
-    "@neogrup/nc-items-grid": "^2.1.6",
-    "@neogrup/nc-products-grid": "^2.0.5",
+    "@neogrup/nc-items-grid": "^2.1.12",
+    "@neogrup/nc-products-grid": "^2.0.8",
     "@polymer/polymer": "^3.3.0"
   },
   "devDependencies": {
