@@ -357,6 +357,10 @@ class NcPacksGrid extends PolymerElement {
     this.packElementsGridData = option.detail.content;
   }
 
+  _refreshLevel(){
+    this.$.gridPacksProducts.refreshLevel();
+  }
+
   _packOptionCodeSelected(option){
     this.$.gridPacksOptions.selectItem(option);
     this.dispatchEvent(new CustomEvent('close-pack-line-actions', { bubbles: true, composed: true }));
