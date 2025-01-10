@@ -49,6 +49,7 @@ class NcPacksGrid extends PolymerElement {
             item-height="[[heightPacksGridItemsOptions]]"
             item-width="[[widthPacksGridItemsOptions]]"
             item-margin="[[marginPacksGridItems]]" 
+            symbol="{{symbol}}"
             animations ="[[animations]]"
             on-item-selected="_packOptionSelected">
         </nc-items-grid>
@@ -63,6 +64,7 @@ class NcPacksGrid extends PolymerElement {
             width-products-grid-items="[[widthPacksGridItems]]" 
             margin-products-grid-items="[[marginPacksGridItems]]"
             view-mode-products-grid-items="[[viewModePacksGridItems]]"
+            symbol="{{symbol}}"
             loading="{{itemsGridLoading}}" 
             animations ="[[animations]]"
             on-product-selected="_packElementSelected"
@@ -105,6 +107,7 @@ class NcPacksGrid extends PolymerElement {
         type: Boolean,
         value: false
       },
+      symbol: String,
       heightPacksGridItemsOptions: {
         type: Number,
         reflectToAttribute: true
